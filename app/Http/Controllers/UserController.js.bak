@@ -1,0 +1,19 @@
+import User from "../../Models/User.js"
+
+const UserController = async (req, res) => {
+    const result = User().then((resolve) => {
+        let response = {
+            status: true,
+            content: resolve
+        }
+        res.status(200).send(response)
+    }, (reject) => {
+        let response = {
+            status: false,
+            message: "Data Not Found"
+        }
+        res.status(400).send(response)
+    });
+}
+
+export default UserController;
